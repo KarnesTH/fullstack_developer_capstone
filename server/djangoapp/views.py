@@ -70,7 +70,13 @@ def registration(request):
     # If it is a new user
     if not username_exist:
         # Create user in auth_user table
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
+        user = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password
+        )
         # Login the user and redirect to list page
         login(request, user)
         data = {"username": username, "status": "Authenticated"}
@@ -78,6 +84,7 @@ def registration(request):
     else:
         data = {"username": username, "error": "Already Registered"}
         return JsonResponse(data)
+
 
 def get_cars(request):
     count = CarMake.objects.filter().count()
