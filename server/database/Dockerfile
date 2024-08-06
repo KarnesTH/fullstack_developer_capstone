@@ -1,6 +1,4 @@
-FROM node:18.12.1-bullseye-slim
-
-RUN npm install -g npm@9.1.3
+FROM node:22-alpine3.20
 
 ADD package.json .
 ADD app.js .
